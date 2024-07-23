@@ -1,12 +1,12 @@
 // import { Button } from "@/components/ui/button";
-import PatientForm from "@/components/ui/forms/PatientForm";
+import PatientForm from "@/components/forms/PatientForm";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="flex h-screen max-h-screen">
-      /*TODO: OTP Verification | Passkey Modal */
+      {/*TODO: OTP Verification | Passkey Modal */}
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[496px]">
           <Image
