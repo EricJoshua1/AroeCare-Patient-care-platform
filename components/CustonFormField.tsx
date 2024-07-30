@@ -17,7 +17,7 @@ interface CustomProps {
   fieldType: FormFieldType;
 }
 
-const CustonFormField = ({ control, fieldType, name }: CustomProps) => {
+const CustonFormField = ({ control, fieldType, name, label }: CustomProps) => {
   return (
     <FormField
       control={control}
