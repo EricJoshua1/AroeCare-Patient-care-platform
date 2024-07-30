@@ -9,6 +9,9 @@ import CustonFormField from "../CustonFormField";
 
 export enum FormFieldType {
   INPUT = "input",
+  TEXTAREA = 'textarea'
+  PHONE_INPUT = 'phoneInput'
+  CHECKBOX = 'checkbox'
 }
 
 const formSchema = z.object({

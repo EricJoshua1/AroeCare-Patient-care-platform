@@ -23,8 +23,10 @@ const CustonFormField = ({ control, fieldType, name }: CustomProps) => {
       control={control}
       name={name}
       render={({ field }) => (
-       <FormItem className="">
-
+       <FormItem className="flex-1">
+          {fieldType !== FormFieldType.CHECKBOX && label (
+            <FormLabel>{label}</FormLabel>
+          )}
        </FormItem>
       )}
     />
