@@ -63,8 +63,8 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           control={form.control}
           name= "name"
           label= "Full name"
-          placeholder= "Rose Anold"
-          iconSrc="assets/icons/user.svg"
+          placeholder="Rose Anold"
+          iconSrc="/assets/icons/user.svg"
           iconAlt="user"
         />
 
