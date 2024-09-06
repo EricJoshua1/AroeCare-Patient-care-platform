@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
+import { Form, FormControl } from "@/components/ui/form";
 import CustonFormField from "../CustonFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
@@ -62,11 +62,68 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           fieldType={FormFieldType.INPUT}
           control={form.control}
           name= "name"
-          label= "Full name"
+          label='full name'
           placeholder="Rose Anold"
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
         />
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustonFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name= "email"
+          label= "Email"
+          placeholder= "roseanold@gmail.com"
+          iconSrc="/assets/icons/email.svg"
+          iconAlt="email"
+        />
+
+        <CustonFormField
+          fieldType={FormFieldType.PHONE_INPUT}
+          control={form.control}
+          name= "phone"
+          label= "Phone number"
+          placeholder= "+82 10-5087-XXXX"  
+        />
+        </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustonFormField
+          fieldType={FormFieldType.DATE_PICKER}
+          control={form.control}
+          name= "birthDate"
+          label= "Date of Birth"
+        />
+
+        <CustonFormField
+          fieldType={FormFieldType.SKELETON}
+          control={form.control}
+          name= "gender"
+          label= "Gender"
+          renderSkeleton={(field) =>(
+            <FormControl>
+                
+            </FormControl>
+
+          )}
+        />
+        </div>
+
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+
+        </div>
+
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+
+        </div>
+
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+
+        </div>
 
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
