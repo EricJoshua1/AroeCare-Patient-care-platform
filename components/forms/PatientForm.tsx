@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import CustonFormField from "../CustonFormField";
+import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
@@ -58,7 +58,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           <p className="text-dark-700">Schedule your first appointment</p>
         </section>
 
-        <CustonFormField
+        <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
           name= "name"
@@ -68,7 +68,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           iconAlt="user"
         />
 
-        <CustonFormField
+        <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
           name= "email"
@@ -78,7 +78,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           iconAlt="email"
         />
 
-        <CustonFormField
+        <CustomFormField
           fieldType={FormFieldType.PHONE_INPUT}
           control={form.control}
           name= "phone"

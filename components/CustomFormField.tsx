@@ -79,7 +79,7 @@ const RenderField = ({field, props}:{field: any; props: CustomProps}) => {
       case FormFieldType.DATE_PICKER:
         return (
           <div className="flex rounded-md border border-dark-400 bg-dark-400">
-              <Image src="/assets/icons/calender.svg" 
+              <Image src="assets/icons/calender.svg" 
                       height={24}
                       width={24}
                       alt="calender"
@@ -100,7 +100,7 @@ const RenderField = ({field, props}:{field: any; props: CustomProps}) => {
   }
 }
 
-const CustonFormField = ( props: CustomProps) => {
+const CustomFormField = ( props: CustomProps) => {
   const {control, fieldType, name, label } = props;
   return (
     <FormField
@@ -122,4 +122,4 @@ const CustonFormField = ( props: CustomProps) => {
   );
 };
 
-export default CustonFormField;
+export default CustomFormField;

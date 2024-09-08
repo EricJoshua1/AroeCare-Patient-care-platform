@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl } from "@/components/ui/form";
-import CustonFormField from "../CustonFormField";
+import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
@@ -61,7 +61,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             </div>
         </section>
 
-        <CustonFormField
+        <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
           name= "name"
@@ -72,7 +72,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
         />
 
         <div className="flex flex-col gap-6 xl:flex-row">
-        <CustonFormField
+        <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
           name= "email"
@@ -82,7 +82,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           iconAlt="email"
         />
 
-        <CustonFormField
+        <CustomFormField
           fieldType={FormFieldType.PHONE_INPUT}
           control={form.control}
           name= "phone"
@@ -91,15 +91,17 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
         />
         </div>
 
-        <div className="flex flex-col gap-6 xl:flex-row">
-        <CustonFormField
-          fieldType={FormFieldType.DATE_PICKER}
-          control={form.control}
-          name= "birthDate"
-          label= "Date of Birth"
-        />
+        <div className="flex flex-col gap-6 xl:flex-row"> 
+        <CustomFormField
+              fieldType={FormFieldType.DATE_PICKER}
+              control={form.control}
+              name="birthDate"
+              label="Date of birth"
+            />
 
-        <CustonFormField
+
+
+        <CustomFormField
           fieldType={FormFieldType.SKELETON}
           control={form.control}
           name= "gender"
