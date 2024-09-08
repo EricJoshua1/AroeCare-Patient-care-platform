@@ -101,9 +101,11 @@ const RenderField = ({field, props}:{field: any; props: CustomProps}) => {
         return (
           <FormControl>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <FormControl className="shad-select-trigger">
-                <SelectTrigger></SelectTrigger>
+              <FormControl >
+                <SelectTrigger className="shad-select-trigger">
                 <SelectValue placeholder={placeholder} />
+                </SelectTrigger>
+                
               </FormControl>
               <SelectContent className="shad-select-content">
                 {props.children}
