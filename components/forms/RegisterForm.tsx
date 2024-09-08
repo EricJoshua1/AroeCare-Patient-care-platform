@@ -115,7 +115,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                     <div key={option}
                     className="radio-group">
                         <RadioGroupItem value={option} id={option} />
-                        <Label htmlFor={option} className="cursor-point">
+                        <Label htmlFor={option} className="cursor-pointer">
                             {option}
                         </Label>
                     </div>
