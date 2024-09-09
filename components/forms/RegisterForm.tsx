@@ -186,7 +186,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             <SelectItem key={doctor.name} value={doctor.name}>
                 <div className="flex cursor-pointer items-center gap-2">
                     <Image 
-                        src={doctor.name}
+                        src={doctor.image}
                         width={32}
                         height={32}
                         alt={doctor.name}
