@@ -278,6 +278,14 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             </SelectItem>)}
         </CustomFormField>
 
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name= "identificationNumber"
+          label= "Identification number"
+          placeholder= "1234567"
+        />
+
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>
