@@ -175,6 +175,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
         </section>
 
 
+
         <CustomFormField
           fieldType={FormFieldType.SELECT}
           control={form.control}
@@ -185,6 +186,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             {Doctors.map((doctor) => 
             <SelectItem key={doctor.name} value={doctor.name}>
                 <div className="flex cursor-pointer items-center gap-2">
+
                     <Image 
                         src={doctor.image}
                         width={32}
@@ -195,11 +197,46 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                         <p>{doctor.name} </p>
                 </div>
 
+
+
             </SelectItem>)}
-        </CustomFormField>
+           </CustomFormField>
 
         <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name= "insuranceProvider"
+          label= "Insurance provider"
+          placeholder= "NHIF"
+        />
 
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name= "insurancePolicyNumber"
+          label= "Insurance policy number"
+          placeholder= "101010101010"
+        />
+        </div>
+
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+          fieldType={FormFieldType.TEXTAREA}
+          control={form.control}
+          name= "allergies"
+          label= "Allergies (if any)"
+          placeholder= "Karanga, Penicilin... "
+        />
+
+        <CustomFormField
+          fieldType={FormFieldType.TEXTAREA}
+          control={form.control}
+          name= "currentMedication"
+          label= "Current Medication (if any)"
+          placeholder= "Paracetamol 500mg"
+        />
         </div>
 
 
