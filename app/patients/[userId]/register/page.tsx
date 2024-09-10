@@ -24,7 +24,7 @@ const Register = async({params: {userId}}: SearchParamProps) => {
 
           <RegisterForm user={user} />
 
-          <p className="justify-items-end text-dark-600 xl:text-left">
+          <p className="copyright py-12">
               © 2024 AroeCare
           </p>
         </div> 
