@@ -294,7 +294,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           label= "Scanned copy of identification document"
           renderSkeleton={(field) =>(
             <FormControl>
-                 <FileUploader />
+                 <FileUploader files={field.value} onChange={field.onChange} />
             </FormControl>
 
           )}
