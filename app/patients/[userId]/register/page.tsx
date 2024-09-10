@@ -24,16 +24,11 @@ const Register = async({params: {userId}}: SearchParamProps) => {
 
           <RegisterForm user={user} />
 
-
-          <div className="text-14-regular mt-20 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
+          <p className="justify-items-end text-dark-600 xl:text-left">
               © 2024 AroeCare
-            </p>
-            <Link href="/?admin=true" className="text-green-500">
-              Admin
-            </Link>
-          </div>
+          </p>
         </div> 
+
       </section>
       <Image
         src="/assets/images/register-img.png"
