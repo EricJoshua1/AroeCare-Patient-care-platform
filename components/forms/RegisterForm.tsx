@@ -240,7 +240,23 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
         </div>
 
 
-      
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+          fieldType={FormFieldType.TEXTAREA}
+          control={form.control}
+          name= "familyMedicalHistory"
+          label= "Family Medical History"
+          placeholder= "Mother had cancer, Father had hear disease "
+        />
+
+        <CustomFormField
+          fieldType={FormFieldType.TEXTAREA}
+          control={form.control}
+          name= "pastMedicalHistory"
+          label= "Past medical history (if any)"
+          placeholder= "ADHD"
+        />
+        </div>
 
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
