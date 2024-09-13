@@ -18,6 +18,7 @@ import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import FileUploader from "../FileUploader";
+import { registerPatient } from "@/lib/actions/patient.actions";
 
 
 
@@ -59,7 +60,7 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
         birthDate: new Date(values.birthDate),
         identificationDocument: formData,
       }
-
+      // @ts-ignore
       const patient = await registerPatient(patientData);
       
 
