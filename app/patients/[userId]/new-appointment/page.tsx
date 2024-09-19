@@ -8,7 +8,7 @@ export default function NewAppointment() {
     <div className="flex h-screen max-h-screen">
    
       <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[860px]">
+        <div className="sub-container max-w-[860px] flex-1 justify-between">
           <Image
             src="/assets/icons/aroe-care-logo.svg"
             height={1000}
@@ -17,7 +17,7 @@ export default function NewAppointment() {
             className="mb-12 h-10 w-fit"
           />
 
-          <PatientForm />
+          {/* <AppointmentForm /> */}
           <div className="text-14-regular mt-20 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
               © 2024 AroeCare
