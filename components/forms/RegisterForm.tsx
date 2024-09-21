@@ -37,9 +37,11 @@ const  RegisterForm = ({user}: {user:User}) => {
     },
   });
 
+
   // 2. Define a submit handler.
 async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
-    setIsLoading(true);
+  console.log(values) 
+    setIsLoading(true); 
 
     let formData;
 
@@ -346,7 +348,7 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
     <CustomFormField 
         fieldType={FormFieldType.CHECKBOX}
         control={form.control}
-        name="disclosureConsent"
+        name="privacyConsent"
         label="I consent to privacy policy"
     />
 
