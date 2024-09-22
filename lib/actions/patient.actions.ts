@@ -1,7 +1,7 @@
 'use server';
 
 import { ID, Query, Users } from "node-appwrite"
-import { BUCKET_ID, DATABASE_ID, databases, PATIENT_COLLECTION_ID, storage, users } from "../appwrite.config"
+import { BUCKET_ID, DATABASE_ID, databases, ENDPOINT, PATIENT_COLLECTION_ID, PROJECT_ID, storage, users } from "../appwrite.config"
 import { parseStringify } from "@/app/lib/utils"
 import {InputFile } from 'node-appwrite/file';
 
@@ -58,7 +58,8 @@ export const registerPatient = async ( {identificationDocument, ...patient } : R
         ID.unique(),
         {
             identificationDocumentId: file?.$id || null,
-            identificationDocumentUrl: '${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/$ {file?.$id}/view?project=${PROJECT_ID}',
+            identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/$ 
+            {file?.$id}/view?project=${PROJECT_ID}`,
             ...patient
         }
 

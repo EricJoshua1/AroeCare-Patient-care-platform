@@ -67,7 +67,8 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
       
 
 
-      if(patient) router.push(`/patient/${user.$id}/new-appointment`)
+      if(patient) router.push(`/patients/${user.$id}/new-appointment`)
+        
       
     } catch (error) {
       console.log(error)
