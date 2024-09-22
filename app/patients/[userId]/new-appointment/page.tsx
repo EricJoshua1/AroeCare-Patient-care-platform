@@ -26,11 +26,11 @@ export default function NewAppointment() {
         </div>
       </section>
       <Image
-        src="/assets/images/onboarding-bc.webp"
+        src="/assets/images/appointment-img.png"
         height={1000}
         width={1000}
         alt="patient"
-        className="side-img max-w-[50%]"
+        className="side-img max-w-[390px] bg-bottom"
       />
     </div>
   );
