@@ -19,6 +19,7 @@ import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import FileUploader from "../FileUploader";
 import { registerPatient } from "@/lib/actions/patient.actions";
+import { error } from "console";
 
 
 
@@ -68,6 +69,7 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
 
 
       if(patient) router.push(`/patients/${user.$id}/new-appointment`)
+        console.log(error)
         
       
     } catch (error) {
