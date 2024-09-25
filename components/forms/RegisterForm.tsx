@@ -19,7 +19,7 @@ import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import FileUploader from "../FileUploader";
 import { registerPatient } from "@/lib/actions/patient.actions";
-import { error } from "console";
+
 
 
 
@@ -64,12 +64,14 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
         identificationDocument: formData,
       }
       // @ts-ignore
-      const patient = await registerPatient(patientData);
+      const newPatient = await registerPatient(patientData);
       
 
 
-      if(patient) router.push(`/patients/${user.$id}/new-appointment`)
-        console.log(error)
+      if(newPatient) {
+        router.push(`/patients/${user.$id}/new-appointment`);
+      }
+       
         
       
     } catch (error) {
