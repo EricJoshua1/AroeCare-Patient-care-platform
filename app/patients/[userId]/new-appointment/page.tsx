@@ -17,8 +17,8 @@ export default function NewAppointment() {
             className="mb-12 h-10 w-fit"
           />
 
-          {/* <AppointmentForm /> */}
-          
+          <AppointmentForm />
+           
             <p className="justify-items-end text-dark-600 xl:text-left">
               © 2024 AroeCare
             </p>
