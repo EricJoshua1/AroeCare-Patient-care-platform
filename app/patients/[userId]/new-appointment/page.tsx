@@ -1,7 +1,9 @@
 // import { Button } from "@/components/ui/button";
-import PatientForm from "@/components/forms/PatientForm";
+import AppointmentForm from "@/components/forms/AppointmentForm";
+
 import Image from "next/image";
 import Link from "next/link";
+
 
 export default function NewAppointment() {
   return (
