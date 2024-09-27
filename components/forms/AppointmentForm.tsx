@@ -16,7 +16,13 @@ import { FormFieldType } from "./PatientForm";
 
 
 
-const AppointmentForm = () => {
+const AppointmentForm = ({
+    userId, patientId, type
+}: {
+    userId: string;
+    patientId: string;
+    type: "create" | "cancel";
+}) => {
   const router = useRouter();
    const [isLoading, setIsLoading] = useState(false)
   // 1. Define your form.
