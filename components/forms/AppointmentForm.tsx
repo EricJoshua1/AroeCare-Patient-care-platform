@@ -57,6 +57,14 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           <p className="text-dark-700">Request a new appointment in 10 seconds</p>
         </section>
 
+        {type !== "cancel" && (
+            <>
+            <CustomFormField>
+                
+            </CustomFormField>
+            </>
+        )}
+
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
