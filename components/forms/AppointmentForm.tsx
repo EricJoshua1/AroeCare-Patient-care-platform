@@ -60,39 +60,12 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
         {type !== "cancel" && (
             <>
             <CustomFormField>
-                
+
             </CustomFormField>
             </>
         )}
 
-        <CustomFormField
-          fieldType={FormFieldType.INPUT}
-          control={form.control}
-          name= "name"
-          label= "Full name"
-          placeholder= "Rose Anold"
-          iconSrc="assets/icons/user.svg"
-          iconAlt="user"
-        />
-
-        <CustomFormField
-          fieldType={FormFieldType.INPUT}
-          control={form.control}
-          name= "email"
-          label= "Email"
-          placeholder= "roseanold@gmail.com"
-          iconSrc="assets/icons/email.svg"
-          iconAlt="email"
-        />
-
-        <CustomFormField
-          fieldType={FormFieldType.PHONE_INPUT}
-          control={form.control}
-          name= "phone"
-          label= "Phone number"
-          placeholder= "+82 10-5087-XXXX"
         
-        />
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>
