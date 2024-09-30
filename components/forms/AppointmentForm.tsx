@@ -12,6 +12,9 @@ import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
+import { Doctors } from "@/constants";
+import { SelectItem } from "../ui/select";
+import Image from "next/image";
 
 
 
@@ -59,9 +62,31 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
         {type !== "cancel" && (
             <>
-            <CustomFormField>
+            <CustomFormField
+          fieldType={FormFieldType.SELECT}
+          control={form.control}
+          name= "primaryPhysician"
+          label= "Primary Physician"
+          placeholder= "Select a physician"  
+        >
+            {Doctors.map((doctor) => 
+            <SelectItem key={doctor.name} value={doctor.name}>
+                <div className="flex cursor-pointer items-center gap-2">
 
-            </CustomFormField>
+                    <Image 
+                        src={doctor.image}
+                        width={32}
+                        height={32}
+                        alt={doctor.name}
+                        className="rounded-full border border-dark-500"
+                        />
+                        <p>{doctor.name} </p>
+                </div>
+
+
+
+            </SelectItem>)}
+           </CustomFormField>
             </>
         )}
 
