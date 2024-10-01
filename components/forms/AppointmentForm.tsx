@@ -117,7 +117,7 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
              showTimeSelect
              dateFormat="MM/dd/yyyy - h:mm aa"
            />
-               <div className=" flex flex-col gap-6">
+               <div className=" flex flex-col gap-6 xl:flex-row">
                <CustomFormField 
                fieldType={FormFieldType.TEXTAREA}
                control={form.control}
