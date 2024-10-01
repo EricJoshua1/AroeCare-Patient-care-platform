@@ -66,8 +66,8 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
           fieldType={FormFieldType.SELECT}
           control={form.control}
           name= "primaryPhysician"
-          label= "Primary Physician"
-          placeholder= "Select a physician"  
+          label= "Doctor"
+          placeholder= "Select a doctor"  
         >
             {Doctors.map((doctor) => 
             <SelectItem key={doctor.name} value={doctor.name}>
@@ -87,6 +87,17 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
             </SelectItem>)}
            </CustomFormField>
+
+           <CustomFormField 
+             fieldType={FormFieldType.DATE_PICKER}
+             control={form.control}
+             name="schedule"
+             label="Expected appointment date"
+             showTimeSelect
+             dateFormat="MM/dd/yyyy - h:mm aa"
+           />
+
+         
             </>
         )}
 
