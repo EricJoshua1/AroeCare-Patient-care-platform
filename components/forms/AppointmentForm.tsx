@@ -108,9 +108,9 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
             <CustomFormField 
                fieldType={FormFieldType.TEXTAREA}
                control={form.control}
-               name="reason"
-               label="Reason for appointment"
-               placeholder="Enter reason for appointment"
+               name="notes"
+               label="Notes"
+               placeholder="Enter notes"
             />
 
                </div>
