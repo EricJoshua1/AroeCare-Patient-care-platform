@@ -112,13 +112,18 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
                label="Notes"
                placeholder="Enter notes"
             />
-
                </div>
-          
-
-           
-         
             </>
+        )}
+
+        {type === "cancel" && (
+             <CustomFormField 
+             fieldType={FormFieldType.TEXTAREA}
+             control={form.control}
+             name="cancellationReason"
+             label="Reason for cancellation"
+             placeholder="Enter reason for cancelation"
+          />
         )}
 
         
