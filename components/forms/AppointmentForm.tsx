@@ -51,7 +51,13 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
     } catch (error) {
       console.log(error)
     }
+
+    setIsLoading(false);
   }
+
+  let buttonLable;
+
+  
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
@@ -128,7 +134,8 @@ async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>
 
         
 
-        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
+        <SubmitButton isLoading={isLoading} className={`${type === 'cancel' ?
+        'shad-danger-btn' : 'shad-primary-btn'} w-full`}>Get Started</SubmitButton>
       </form>
     </Form>
   );
