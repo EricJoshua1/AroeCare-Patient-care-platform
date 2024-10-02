@@ -8,7 +8,7 @@ import { Form } from "@/components/ui/form";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
-import { AppointmentFormValidation } from "@/lib/validation";
+import { getAppointmentSchema } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 import { FormFieldType } from "./PatientForm";
@@ -28,7 +28,11 @@ const AppointmentForm = ({
     type: "create" | "cancel" | "schedule";
 }) => {
   const router = useRouter();
-   const [isLoading, setIsLoading] = useState(false)
+   const [isLoading, setIsLoading] = useState(false);
+   
+   const AppointmentFormValidation = getAppointmentSchema(type);
+
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
@@ -66,7 +70,7 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
             patient: patientId,
             primaryPhysician: values.primaryPhysician,
             schedule: new Date(values.schedule),
-            reason: values.reason,
+            reason: values.reason!,
             note: values.note,
             status: status as Status,
         } 
