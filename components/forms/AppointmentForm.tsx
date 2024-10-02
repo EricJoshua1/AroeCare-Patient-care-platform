@@ -15,6 +15,7 @@ import { FormFieldType } from "./PatientForm";
 import { Doctors } from "@/constants";
 import { SelectItem } from "../ui/select";
 import Image from "next/image";
+import { createAppointment } from "@/lib/actions/appointment.actions";
 
 
 
@@ -69,9 +70,16 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
             note: values.note,
             status: status as Status,
         } 
+        const appointment = await createAppointment(appointmentData);
+        
+        if(appointment) {
+            form.reset();
+            router.push(`/patients/${userId}/new-appointment/success?appointmentId=$
+                {appointment.id}`)
+        }
       }
 
-      // const appointment = await createAppointment(appointmentData);
+      
     } catch (error) {
       console.log(error)
     }
