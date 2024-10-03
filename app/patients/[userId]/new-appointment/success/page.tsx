@@ -1,3 +1,4 @@
+import { formatDateTime } from '@/app/lib/utils';
 import { Doctors } from '@/constants';
 import { getAppointment } from '@/lib/actions/appointment.actions';
 import Image from 'next/image'
@@ -50,6 +51,16 @@ const success = async ({params: {userId}, searchParams}: SearchParamProps) => {
                   height={100}
                   className='size-6'
                  />
+                 <p className='whitespace-nowrap'>Dr. {doctor?.name}</p>
+            </div>
+            <div className='flex gap-2'>
+                <Image 
+                  src='/assets/icons/calendar.svg'
+                  height={24}
+                  width={24}
+                  alt='calendar'
+                />
+                <p>{formatDateTime(appointment.schedule).dateTime}</p>
             </div>
         </section>
       </div>
