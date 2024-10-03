@@ -1,4 +1,5 @@
 import { formatDateTime } from '@/app/lib/utils';
+import { Button } from '@/components/ui/button';
 import { Doctors } from '@/constants';
 import { getAppointment } from '@/lib/actions/appointment.actions';
 import Image from 'next/image'
@@ -63,6 +64,14 @@ const success = async ({params: {userId}, searchParams}: SearchParamProps) => {
                 <p>{formatDateTime(appointment.schedule).dateTime}</p>
             </div>
         </section>
+
+        <Button variant='outline' className='shad-primary-btn' asChild>
+            <Link href={`/patients/${userId}/new-appointment`}>
+              New Appointment
+            </Link>
+        </Button>
+
+        <p className='copyright'>© 2024 AroeCare</p>
       </div>
     </div>
   )
