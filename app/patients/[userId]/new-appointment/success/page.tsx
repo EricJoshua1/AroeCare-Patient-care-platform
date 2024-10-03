@@ -26,7 +26,13 @@ const success = () => {
             />
 
             <h2 className='header mb-6 max-w-[600px] text-center'>
-                Your <span className='text-yellow-600'>appointment request</span> has been successfully submitted !</h2>
+                Your <span className='text-yellow-600'>appointment request</span> has been successfully submitted !
+            </h2>
+            <p>We will be in touch shortly to confirm</p>
+        </section>
+
+        <section>
+            <p>Requested appointment details:</p>
         </section>
       </div>
     </div>
