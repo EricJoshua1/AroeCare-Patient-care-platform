@@ -31,6 +31,18 @@ const PasskeyModal = () => {
     const [passkey, setPasskey] = useState('')
     const [error, setError] = useState('')
 
+
+    const validatePasskey = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      e.preventDefault();
+
+      if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+        
+      } else {
+        setError('Invalid passkey. Please try again')
+      }
+
+    }
+
     const closeModal = () => {
       setOpen(false);
       router.push('/')
@@ -74,11 +86,15 @@ const PasskeyModal = () => {
         {error} 
         </p> }
     </div>
-
     </AlertDialogHeader>
+
+
     <AlertDialogFooter>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Continue</AlertDialogAction>
+   
+      <AlertDialogAction onClick={(e) => validatePasskey(e)}
+        className='shad-primary-btn w-full'>
+        Enter Admin Passkey
+      </AlertDialogAction>
     </AlertDialogFooter>
    </AlertDialogContent>
 </AlertDialog>
