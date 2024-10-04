@@ -23,6 +23,7 @@ import {
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { encryptKey } from '@/app/lib/utils';
   
 
 const PasskeyModal = () => {
@@ -36,6 +37,11 @@ const PasskeyModal = () => {
       e.preventDefault();
 
       if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+        const encryptedKey = encryptKey(passkey);
+
+        localStorage.setItem('accessKey', encryptedKey);
+
+        setOpen(false);
         
       } else {
         setError('Invalid passkey. Please try again')
