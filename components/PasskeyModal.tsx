@@ -13,13 +13,16 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
   
 
 const PasskeyModal = () => {
+    const router = useRouter();
     const [open, setOpen]= useState(true);
 
     const closeModal = () => {
-      setOpen(false)
+      setOpen(false);
+      router.push('/')
     }
 
 
@@ -36,6 +39,7 @@ const PasskeyModal = () => {
         height={20}
         width={20} 
         onClick={() => closeModal()}
+        className='cursor-pointer'
         />
       </AlertDialogTitle>
       <AlertDialogDescription>
