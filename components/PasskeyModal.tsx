@@ -23,7 +23,7 @@ import {
 
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { encryptKey } from '@/app/lib/utils';
+import { decryptKey, encryptKey } from '@/app/lib/utils';
   
 
 const PasskeyModal = () => {
@@ -37,8 +37,9 @@ const PasskeyModal = () => {
     ('accessKey') : null;
 
     useEffect (() => {
+      const  accessKey = encryptedKey && decryptKey(encryptedKey);
       if(path) {
-        if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+        if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
         
         setOpen(false);
         router.push('/admin')
