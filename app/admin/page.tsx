@@ -16,6 +16,8 @@ const Admin = () => {
               
              />
         </Link>
+
+        <p className='text-16-semibold'>Admin Dashboard</p>
       </header>
     </div>
   )
