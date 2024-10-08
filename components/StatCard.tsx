@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React from 'react'
 
 interface StatCardProps {
-    type: 'appointment' | 'pending' | 'cancelled',
+    type: 'appointments' | 'pending' | 'cancelled',
     count: number,
     icon: string,
     label: string,
