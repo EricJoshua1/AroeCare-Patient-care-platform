@@ -1,3 +1,4 @@
+import StatCard from '@/components/StatCard'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -23,6 +24,12 @@ const Admin = () => {
       <main className='admin-main'>
         <section  className='w-full space-y-4'>
             <h1 className='header'>Welcome</h1>
+            <p className='text-dark-700'>Start the day with managing new appointments</p>
+        </section>
+
+
+        <section className='admin-stat'>
+            <StatCard />
         </section>
       </main>
     </div>
