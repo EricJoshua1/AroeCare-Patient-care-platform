@@ -1,6 +1,13 @@
 import React from 'react'
 
-const StatCard = () => {
+interface StatCardProps {
+    type: 'appointment' | 'pending' | 'cancelled',
+    count: number,
+    icon: string,
+    label: string,
+}
+
+const StatCard = ({type, icon, label, count = 0}: StatCardProps) => {
   return (
     <div>
       StatCard
