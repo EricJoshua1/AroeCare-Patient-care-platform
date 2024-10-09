@@ -4,12 +4,12 @@ import React from 'react'
 
 interface StatCardProps {
     type: 'appointments' | 'pending' | 'cancelled',
-    count: number,
+    counts: number,
     icon: string,
     label: string,
 }
 
-const StatCard = ({type, icon, label, count = 0}: StatCardProps) => {
+const StatCard = ({type, icon, label, counts = 0}: StatCardProps) => {
   return (
     <div className={clsx('stat-card', {
         'bg-appointments' : type === 'appointments',
@@ -24,7 +24,7 @@ const StatCard = ({type, icon, label, count = 0}: StatCardProps) => {
           width={32}
           className='size-8 w-fit'
         />
-        <h2 className='text-32-bold text-white'>{count} </h2>
+        <h2 className='text-32-bold text-white'>{counts} </h2>
      </div>
 
      <p className='text-14-regular'>{label}</p>

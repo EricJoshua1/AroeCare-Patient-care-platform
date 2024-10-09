@@ -3,6 +3,7 @@
 import { APPOINTMENT_COLLECTION_ID, DATABASE_ID, databases } from "../appwrite.config";
 import { ID, Query } from "node-appwrite";
 import { parseStringify } from "@/app/lib/utils";
+import { Appointment } from "@/types/appwrite.types";
 
 
 
@@ -45,12 +46,24 @@ export const getRecentAppointmentList = async () => {
         [Query.orderDesc('$createdAt')]
        );
 
-       const initialCount = {
+       const initialCounts = {
         scheduledCount: 0,
         pendingCount: 0,
         cancelledCount: 0,
-        
        }
+
+       const counts = (appointments.documents as Appointment[]).reduce((acc, appointment)  => {
+        if (appointment.status === 'scheduled') {
+            acc.scheduledCount +=1;        
+        } else if (appointment.status === 'pending') {
+            acc.scheduledCount +=1;          
+        } else if (appointment.status === 'cancelled') {
+            acc.scheduledCount +=1;
+        }
+
+        return acc;
+
+     }, initialCounts);
         
     } catch (error) {
        console.log(error); 

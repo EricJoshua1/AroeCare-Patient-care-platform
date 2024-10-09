@@ -31,21 +31,21 @@ const Admin = () => {
         <section className='admin-stat'>
             <StatCard 
               type='appointments'
-              count={5}
+              counts={5}
               label='Scheduled appointments'
               icon= '/assets/icons/appointments.svg'
             />
 
              <StatCard 
               type='pending'
-              count={30}
+              counts={30}
               label='Pending appointments'
               icon= '/assets/icons/pending.svg'
             />
 
              <StatCard 
               type='cancelled'
-              count={9}
+              counts={9}
               label='Cancelled appointments'
               icon= '/assets/icons/cancelled.svg'
             />
