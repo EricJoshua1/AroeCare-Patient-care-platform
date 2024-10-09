@@ -64,6 +64,14 @@ export const getRecentAppointmentList = async () => {
         return acc;
 
      }, initialCounts);
+
+     const data = {
+        totalCount: appointments.total,
+        ...counts,
+        documents: appointments.documents
+     }
+
+     return parseStringify(data);
         
     } catch (error) {
        console.log(error); 
