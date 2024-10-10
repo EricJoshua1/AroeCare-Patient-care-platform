@@ -28,6 +28,15 @@ export const columns: ColumnDef<Payment>[] = [
         header: 'ID',
         cell: ({row}) => <p className="text-14-medium"> {row.index + 1} </p>
     },
+
+    {
+      accessorKey:'patient',
+      header:'Patient',
+      cell: ({row}) => {
+        const appointment = row.original;
+        
+        return<p className="text-14-medium">{appointment.patient.name} </p>}
+    },
    
   {
     accessorKey: "status",
