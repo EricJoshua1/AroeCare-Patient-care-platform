@@ -1,4 +1,4 @@
-
+'use client'
 
 import {
     Dialog,
@@ -8,12 +8,19 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
+import { useState } from "react"
+import { Button } from "./ui/button"
   
 
-const AppointmentModal = () => {
+const AppointmentModal = ({ type }: {type: 'schedule' | 'cancel'} ) => {
+    const [open, setOpen ] = useState(false);
   return (
-    <Dialog>
-  <DialogTrigger>Open</DialogTrigger>
+    <Dialog open={open} onOpenChange={setOpen} >
+  <DialogTrigger asChild>
+    <Button variant='ghost' className={`capitalize ${type === 'schedule' && "text-green-500"}` }>
+        {type}
+    </Button>
+  </DialogTrigger>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Are you absolutely sure?</DialogTitle>
