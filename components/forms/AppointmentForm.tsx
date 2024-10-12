@@ -17,6 +17,7 @@ import { SelectItem } from "../ui/select";
 import Image from "next/image";
 import { createAppointment } from "@/lib/actions/appointment.actions";
 import { Appointment } from "@/types/appwrite.types";
+import { stat } from "fs";
 
 
 
@@ -84,7 +85,16 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
             router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`)
         }
       } else {
-        const appointmentToCancel = {}
+        const appointmentToCancel = {
+          userId, 
+          appointmentId: appointment?.$id,
+          appointment: {
+            primaryPhysician: values.primaryPhysician,
+            schedule: new Date(values.schedule),
+            status: status as Status,
+            canellationReason: values?.cancellationReason,
+          },
+        }
       }
 
       
