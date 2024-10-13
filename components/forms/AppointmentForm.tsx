@@ -85,7 +85,7 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
             router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`)
         }
       } else {
-        const appointmentToCancel = {
+        const appointmentToUpdate = {
           userId, 
           appointmentId: appointment?.$id,
           appointment: {
@@ -94,7 +94,10 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
             status: status as Status,
             canellationReason: values?.cancellationReason,
           },
+          type
         }
+
+        const updatedAppoinment = await updateAppointment(appointmentToUpdate);
       }
 
       
