@@ -18,7 +18,7 @@ import Image from "next/image";
 import { createAppointment } from "@/lib/actions/appointment.actions";
 import { Appointment } from "@/types/appwrite.types";
 import { stat } from "fs";
-
+import { updateAppointment } from "@/lib/actions/appointment.actions";
 
 
 
@@ -87,7 +87,7 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
       } else {
         const appointmentToUpdate = {
           userId, 
-          appointmentId: appointment?.$id,
+          appointmentId: appointment?.$id!,
           appointment: {
             primaryPhysician: values.primaryPhysician,
             schedule: new Date(values.schedule),
