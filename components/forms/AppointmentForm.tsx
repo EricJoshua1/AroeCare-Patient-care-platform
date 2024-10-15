@@ -98,9 +98,12 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
         }
 
         const updatedAppoinment = await updateAppointment(appointmentToUpdate);
-      }
 
-      
+        if (updatedAppoinment) {
+          setOpen && setOpen(false);
+          form.reset();
+        }
+      }   
     } catch (error) {
       console.log(error)
     }
