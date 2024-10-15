@@ -121,7 +121,7 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
         buttonLabel = 'Create Appointment'
         break;
     case "schedule":
-        buttonLabel = 'Schedule  Appointment'
+        buttonLabel = 'Schedule Appointment'
         break;
   
     default:
