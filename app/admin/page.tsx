@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import {columns} from '@/components/table/columns'
-import { Payment } from '@/components/table/columns'
+
 
 
 
