@@ -95,7 +95,7 @@ const  onSubmit = async (
             primaryPhysician: values.primaryPhysician,
             schedule: new Date(values.schedule),
             status: status as Status,
-            canellationReason: values?.cancellationReason,
+            cancellationReason: values?.cancellationReason,
           },
           type
         }
