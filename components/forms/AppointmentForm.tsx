@@ -45,12 +45,14 @@ const AppointmentForm = ({
       schedule: appointment ? new Date(appointment.schedule) : new Date(),
       reason: appointment ? appointment.reason : "",
       note: appointment ? appointment.note : "",
-      cancellationReason: appointment ? appointment.cancellationReason : "",
+      cancellationReason: appointment?.cancellationReason || "",
     },
   });
 
   // 2. Define a submit handler.
-async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
+const  onSubmit = async (
+  values: z.infer<typeof AppointmentFormValidation>
+) => {
   console.log("IM SUBMITTING", {type})
 
     setIsLoading(true);
@@ -63,28 +65,27 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
         case "cancel":
             status = "cancelled";
             break;
-    
         default:
             status = "pending";
-            break;
     }
 
     try {
       if (type === 'create' && patientId) {
-        const appointmentData = {
+        const appointment = {
             userId,
             patient: patientId,
             primaryPhysician: values.primaryPhysician,
             schedule: new Date(values.schedule),
             reason: values.reason!,
-            note: values.note,
             status: status as Status,
+            note: values.note,
         } 
-        const appointment = await createAppointment(appointmentData);
+        const newAppointment = await createAppointment(appointment);
         
-        if(appointment) {
+        if(newAppointment) {
             form.reset();
-            router.push(`/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`)
+            router.push(
+              `/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`);
         }
       } else {
         const appointmentToUpdate = {
@@ -111,33 +112,32 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
     }
 
     setIsLoading(false);
-  }
+  };
 
   let buttonLabel;
-
   switch (type) {
     case 'cancel':
         buttonLabel = 'Cancel Appointment';
         break;
-    case "create":
-        buttonLabel = 'Create Appointment'
-        break;
     case "schedule":
-        buttonLabel = 'Schedule Appointment'
+        buttonLabel = 'Schedule Appointment';
         break;
-  
     default:
-        break;
+        buttonLabel = "Submit Appointment";
   }
 
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
-      {type === 'create' && <section className="mb-12 space-y-4">
-         <h1 className="header">New Appointment </h1>
-          <p className="text-dark-700">Request a new appointment in 10 seconds</p>
-        </section> } 
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
+      {type === 'create' && (
+        <section className="mb-12 space-y-4">
+        <h1 className="header">New Appointment </h1>
+         <p className="text-dark-700">
+          Request a new appointment in 10 seconds
+          </p>
+       </section>
+      )} 
 
         {type !== "cancel" && (
             <>
@@ -148,23 +148,21 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
           label= "Doctor"
           placeholder= "Select a doctor"  
         >
-            {Doctors.map((doctor) => 
-            <SelectItem key={doctor.name} value={doctor.name}>
+            {Doctors.map((doctor, i) => (
+            <SelectItem key={doctor.name + 1} value={doctor.name}>
                 <div className="flex cursor-pointer items-center gap-2">
 
                     <Image 
                         src={doctor.image}
                         width={32}
                         height={32}
-                        alt={doctor.name}
+                        alt="doctor"
                         className="rounded-full border border-dark-500"
                         />
-                        <p>{doctor.name} </p>
+                        <p>{doctor.name}</p>
                 </div>
-
-
-
-            </SelectItem>)}
+            </SelectItem>
+          ))}
            </CustomFormField>
 
            <CustomFormField 
@@ -175,21 +173,26 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
              showTimeSelect
              dateFormat="MM/dd/yyyy - h:mm aa"
            />
-               <div className=" flex flex-col gap-6 xl:flex-row">
-               <CustomFormField 
+
+           <div 
+              className= {`flex flex-col gap-6 ${type === "create" && "xl:flex-row"}`}
+              >
+              <CustomFormField 
                fieldType={FormFieldType.TEXTAREA}
                control={form.control}
                name="reason"
                label="Reason for appointment"
-               placeholder="Enter reason for appointment"
+               placeholder="Annual monthly check-up"
+               disabled={type === "schedule"}
             />
 
             <CustomFormField 
                fieldType={FormFieldType.TEXTAREA}
                control={form.control}
                name="note"
-               label="Notes"
-               placeholder="Enter notes"
+               label="Notes/Comments"
+               placeholder="Prefer afternoon appointments if possible"
+               disabled={type === "schedule"}
             />
                </div>
             </>
@@ -201,14 +204,18 @@ async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
              control={form.control}
              name="cancellationReason"
              label="Reason for cancellation"
-             placeholder="Enter reason for cancelation"
+             placeholder="Got an urgent issue i have to deal with"
           />
         )}
 
         
 
-        <SubmitButton isLoading={isLoading} className={`${type === 'cancel' ?
-        'shad-danger-btn' : 'shad-primary-btn'} w-full`}>{buttonLabel}</SubmitButton>
+        <SubmitButton 
+          isLoading={isLoading}
+          className={`${type === 'cancel' ? 'shad-danger-btn' : 'shad-primary-btn'} w-full`}
+          >
+            {buttonLabel}
+            </SubmitButton>
       </form>
     </Form>
   );
