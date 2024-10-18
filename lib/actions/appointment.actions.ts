@@ -5,6 +5,7 @@ import { ID, Query } from "node-appwrite";
 import { parseStringify } from "@/app/lib/utils";
 import { Appointment } from "@/types/appwrite.types";
 import { revalidatePath } from "next/cache";
+import { formatDateTime } from "@/app/lib/utils";
 
 
 
@@ -95,7 +96,15 @@ export const updateAppointment = async ({appointmentId, userId, appointment, typ
             throw new Error( 'Appointment not found');
         }
 
-        // TODO SMS notification
+        const smsMessage = `
+          Hi, it's AroeCare. 
+          ${type === 'schedule'
+            ? `Your appointment has been scheduled for ${formatDateTime(appointment.schedule!)}`
+            : `We regret to inform you that your appointment has been cancelled for the following reason. Reason: ${appointment.cancellationReason}`
+          }
+        `
+
+        await sendSMSNotification(userId, smsMessage);
 
 
       revalidatePath('/admin')
