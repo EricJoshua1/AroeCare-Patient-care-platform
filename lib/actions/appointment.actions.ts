@@ -99,7 +99,7 @@ export const updateAppointment = async ({appointmentId, userId, appointment, typ
         const smsMessage = `
           Hi, it's AroeCare. 
           ${type === 'schedule'
-            ? `Your appointment has been scheduled for ${formatDateTime(appointment.schedule!)}`
+            ? `Your appointment has been scheduled for ${formatDateTime(appointment.schedule!).dateOnly} with Dr. ${appointment.primaryPhysician}`
             : `We regret to inform you that your appointment has been cancelled for the following reason. Reason: ${appointment.cancellationReason}`
           }
         `
