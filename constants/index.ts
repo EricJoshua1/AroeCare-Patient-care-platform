@@ -69,10 +69,7 @@ export const Doctors = [
     image: "/assets/images/dr-lee.png",
     name: "Hannah Lee",
   },
-  {
-    image: "/assets/images/dr-cruz.png",
-    name: "Alyana Cruz",
-  },
+  
 ];
 
 export const StatusIcon = {
